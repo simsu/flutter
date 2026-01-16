@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/pages/my_home_page.dart';
+// import 'package:flutter_application_2/pages/my_home_page.dart';
+// import 'package:flutter_application_2/pages/home_page.dart';
+import 'package:flutter_application_2/pages/term_use.dart';
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,7 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: SignUpTermsScreen(),
+      // home: LoginPage(),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
