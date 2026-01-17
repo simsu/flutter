@@ -91,6 +91,7 @@ class MyHomePage extends StatelessWidget {
   }
 
   // 버튼을 만드는 공통 위젯 함수
+  // 생성자를 만들어서 final로 만들면 컴파일러한테 상수로 넘겨 주어서 더 효율적이다.
   Widget _buildLoginButton({
     required String text,
     required Color backgroundColor,

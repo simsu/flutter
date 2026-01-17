@@ -156,3 +156,6 @@ class ProfileUploadScreen extends StatelessWidget {
     );
   }
 }
+// 프로필 버튼 누르면 누른 위치에서 팝업이 (갤러리 선택, 사진 촬영) 떠야한다.
+// method channel 로 네이티브 기능 호출 필요
+// icon: Image.asset('경로', width: 24, height: 24)

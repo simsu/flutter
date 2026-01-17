@@ -96,6 +96,7 @@ class AgeVerificationScreen extends StatelessWidget {
                       bottom: BorderSide(color: Colors.red, width: 1.0),
                     ),
                   ),
+                  // 클릭 시 동작은 처음 페이지로 돌아간다.
                   child: const Text(
                     '만 19세 이상이 아니신가요?',
                     style: TextStyle(color: Colors.red, fontSize: 15),

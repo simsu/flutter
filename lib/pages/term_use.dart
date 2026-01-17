@@ -51,6 +51,7 @@ class _SignUpTermsScreenState extends State<SignUpTermsScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 30),
+            // Text.rich() 도 가능
             child: RichText(
               text: const TextSpan(
                 style: TextStyle(fontSize: 22, color: Colors.black, height: 1.4, fontWeight: FontWeight.w400),
@@ -124,6 +125,9 @@ class _SignUpTermsScreenState extends State<SignUpTermsScreen> {
                 child: TextButton(
                   onPressed: _isNextButtonEnabled
                       ? () {
+                          // Navigator of 는 현재 context에서 네비게이션을 찾음
+                          // 라이브러리는 GetX, riverpod 등이 있다.
+                          // 
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => const AgeVerificationScreen()),
@@ -212,3 +216,19 @@ class _SignUpTermsScreenState extends State<SignUpTermsScreen> {
     );
   }
 }
+
+// 위젯에서 onPressed 같은 함수를 구현할 때
+// 익명함수로 구현하는 방법과 별도의 메서드로 구현하는 방법이 있다.
+// 익명함수는 간단한 로직에 적합하고, 메서드는 복잡한 로직이나 재사용이 필요한 경우에 적합하다.
+// 예시:
+// 1. 익명함수
+// 이름 없는 함수 (람다함수) 예시: () { ... }
+// ElevatedButton(
+//   final voidCallback onPressed;
+//   onPressed: onPressed
+// ); 
+// 기본 Checkbox와 CircleCheckBox의 차이점
+// 가장 큰 차이점은 setState가 있고 없다이다.
+// 기본 Checkbox는 상태 관리를 직접 해야 하지만, CircleCheckBox는 상태 관리를 내부에서 처리한다.
+// setState() 메서드는 StatefulWidget에서 상태를 변경하고 UI를 다시 빌드하는 데 사용된다.
+// 따라서 CircleCheckBox는 상태 변경 시 setState()를 호출할 필요가 없다.
