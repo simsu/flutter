@@ -196,17 +196,14 @@ class _SignUpTermsScreenState extends State<SignUpTermsScreen> {
               style: TextStyle(fontSize: fontSize, color: textColor, fontWeight: fontWeight),
             ),
             const SizedBox(width: 4),
-          ],
-          Container(
-            decoration: showUnderline
-                ? BoxDecoration(
-                    border: Border(bottom: BorderSide(color: textColor, width: 0.8)),
-                  )
-                : null,
-            child: Text(
-              title,
-              style: TextStyle(fontSize: fontSize, color: textColor, fontWeight: fontWeight),
-            ),
+          ],Text(
+            title,
+            style: TextStyle(
+              fontSize: fontSize,
+              color: textColor,
+              fontWeight: fontWeight,
+              decoration: showUnderline ? TextDecoration.underline : TextDecoration.none,
+              ),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/widgets/show_alert.dart';
 import 'package:flutter_application_2/pages/profile_upload.dart';
 
 class AgeVerificationScreen extends StatelessWidget {
@@ -89,21 +90,40 @@ class AgeVerificationScreen extends StatelessWidget {
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 40.0),
-                child: Container(
-                  padding: const EdgeInsets.only(bottom: 2),
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(color: Colors.red, width: 1.0),
+                child: GestureDetector(
+                  onTap: () async {
+                    final navigator = Navigator.of(context);
+                    // 다이얼로그가 context를 바꿔서 아래에서 변경된 값을 사용해야한다.
+                    // !플러터는 await 뒤의 context 사용을 지양하고 쓰려면 mounted 체크를 해야한다.
+                    // stateFulWidget에서는 가능하지만 stateless에서는 불가능하다.
+                    // showAlert를 stateful로 바꾸는 단점
+                    // 1. alert 하나 띄우려고 위젯 생명주기 생성
+                    // 2. 유틸 함수가 “위젯”으로 변질됨
+                    // 3. 재사용성·가독성 나빠짐
+                    // 4. 테스트/유지보수 부담 증가
+                    // -> Stateless + context 캡처 방식 사용
+                    await showAlert(
+                        context, // <- async gap, 이 위젯이 dispose 된다면 런타임 에러가 발생할 수 있다.
+                        title: '만 19세 미만 이용 불가',
+                        message: '만 19세 미만은 월리 서비스를 이용할 수 없습니다.');
+                    // 처음 페이지로 이동
+                    navigator.popUntil((route) => route.isFirst);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(bottom: 2),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(color: Colors.red, width: 1.0),
+                      ),
                     ),
-                  ),
-                  // 클릭 시 동작은 처음 페이지로 돌아간다.
-                  child: const Text(
-                    '만 19세 이상이 아니신가요?',
-                    style: TextStyle(color: Colors.red, fontSize: 15),
+                    child: const Text(
+                      '만 19세 이상이 아니신가요?',
+                      style: TextStyle(color: Colors.red, fontSize: 15),
+                    ),
                   ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
