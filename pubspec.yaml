@@ -12,6 +12,9 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3
+  firebase_core: ^4.4.0
+  image_picker: ^1.0.7
+  image_editor_plus: ^1.0.8
   # 쿠퍼티노아이콘, 플러터스크린유틸 flutter pub get 명령어로 알아서 가져온다.
   # pub.dev 라이브러리 사이트
 
